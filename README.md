@@ -1,10 +1,8 @@
 # StackPanel Extension for Vaadin 7
 
-StackPanel is an Vaadin 7 Panel extension
+StackPanel is a Panel extension that hides or shows the Panel's content when the Panel's header is clicked.
 
-## Online demo
-
-Try the add-on demo at <url of the online demo>
+When stacked in a VerticalLayout, it will act as an Accordion but where more then one section can be displayed at a time.
 
 ## Download release
 
@@ -12,7 +10,7 @@ Official releases of this add-on are available at Vaadin Directory. For Maven in
 
 ## Building and running demo
 
-git clone <url of the MyComponent repository>
+git clone https://github.com/mouellet/vaadin-stackpanel.git
 mvn clean install
 cd demo
 mvn jetty:run
@@ -79,7 +77,7 @@ Contributions are welcome, but there are no guarantees that they are accepted as
 
 Add-on is distributed under Apache License 2.0. For license terms, see LICENSE.txt.
 
-MyComponent is written by <...>
+StackPanel is written by Mathieu Ouellet
 
 # Developer Guide
 
@@ -89,7 +87,7 @@ Here is a simple example on how to try out the add-on component:
 
 <...>
 
-For a more comprehensive example, see src/test/java/org/vaadin/template/demo/DemoUI.java
+For a more comprehensive example, see src/main/java/org/vaadin/addons/stackpanel/demo/DemoUI.java
 
 ## Features
 
@@ -107,4 +105,4 @@ For a more comprehensive example, see src/test/java/org/vaadin/template/demo/Dem
 
 ## API
 
-MyComponent JavaDoc is available online at <...># vaadin-stackpanel
+StackPanel JavaDoc is available online at <...>
