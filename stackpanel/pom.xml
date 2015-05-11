@@ -6,7 +6,7 @@
     <artifactId>stackpanel</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1</version>
-    <name>Vaadin StackPanel Extension</name>
+    <name>StackPanel Extension for Vaadin</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,7 +19,7 @@
         <Implementation-Title>${project.name}</Implementation-Title>
         <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
         <Vaadin-License-Title>Apache License 2.0</Vaadin-License-Title>
-        <Vaadin-Addon>${artifactId}-${project.version}.jar</Vaadin-Addon>
+        <Vaadin-Addon>${project.artifactId}-${project.version}.jar</Vaadin-Addon>
     </properties>
 
     <organization>

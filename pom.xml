@@ -6,7 +6,7 @@
     <artifactId>stackpanel-root</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1</version>
-    <name>Vaadin StackPanel Extension Root Project</name>
+    <name>StackPanel Extension for Vaadin Root Project</name>
 
     <modules>
         <module>stackpanel</module>

@@ -6,7 +6,7 @@
     <artifactId>stackpanel-demo</artifactId>
     <packaging>war</packaging>
     <version>0.0.1</version>
-    <name>Vaadin StackPanel Extension Demo</name>
+    <name>StackPanel Extension for Vaadin Demo</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
