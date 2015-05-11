@@ -50,14 +50,12 @@ Another way of debugging client-side is superdev mode. To enable it, uncomment d
 ## Release notes
 
 ### Version 0.0.1-SNAPSHOT
-- ...
-- ...
+- Initial release
 
 ## Roadmap
 
 This component is developed as a hobby with no public roadmap or any guarantees of upcoming releases. That said, the following features are planned for upcoming releases:
-- ...
-- ...
+- Openen/Closed indicator (icon) left or right alignable
 
 ## Issue tracking
 
@@ -83,26 +81,17 @@ StackPanel is written by Mathieu Ouellet
 
 ## Getting started
 
-Here is a simple example on how to try out the add-on component:
-
-<...>
-
 For a more comprehensive example, see src/main/java/org/vaadin/addons/stackpanel/demo/DemoUI.java
 
 ## Features
 
-### Feature A
+### Opened by default, StackPanel can be programmaticaly open and close.
 
-<...>
+```
+StackPanel stackPanel = StackPanel.extend(new Panel());
+stackPanel.close();
+assertFalse(stackPanel.isOpen());
 
-### Feature B
-
-<...>
-
-### Feature C
-
-<...>
-
-## API
-
-StackPanel JavaDoc is available online at <...>
+stackPanel.open();
+assertTrue(stackPanel.isOpen());
+```
