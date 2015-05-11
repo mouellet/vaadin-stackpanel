@@ -5,33 +5,31 @@
     <groupId>org.vaadin.addons</groupId>
     <artifactId>stackpanel-demo</artifactId>
     <packaging>war</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>Vaadin StackPanel Extension Demo</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <vaadin.version>7.4.4</vaadin.version>
+        <vaadin.version>7.4.5</vaadin.version>
         <vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
     </properties>
 
-    <!--     
-	<organization>
-		<name>My Name</name>
-		<url>https://github.com/mygithubaccount/MyComponent/</url>
-	</organization>
-    
-	<scm>
-		<url>git://github.com/mygithubaccount/MyComponent.git</url>
-		<connection>scm:git:git://github.com/mygithubaccount/MyComponent.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com:/mygithubaccount/${ComponentClassName}.git</developerConnection>
-		<tag>MyComponent add-on for Vaadin</tag>
-	</scm>
+    <organization>
+        <name>Mathieu Ouellet</name>
+        <url>https://github.com/mouellet/</url>
+    </organization>
 
-	<issueManagement>
-		<system>GitHub</system>
-		<url>https://github.com/mygithubaccount/MyComponent/issues</url>
-	</issueManagement>
-    -->
+    <scm>
+        <url>git://github.com/mouellet/vaadin-stackpanel.git</url>
+        <connection>scm:git:git://github.com/mouellet/vaadin-stackpanel.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:/mouellet/vaadin-stackpanel.git</developerConnection>
+        <tag>StackPanel Extension for Vaadin</tag>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/mouellet/vaadin-stackpanel/issues</url>
+    </issueManagement>
 
     <licenses>
         <license>
