@@ -4,9 +4,11 @@ import java.util.logging.Logger;
 
 import org.vaadin.addons.stackpanel.StackPanel;
 
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.UIObject;
 import com.vaadin.client.ComponentConnector;
 import com.vaadin.client.ServerConnector;
@@ -29,10 +31,16 @@ public class StackPanelConnector extends AbstractExtensionConnector {
 
     private VPanel panel;
 
+    private final Element captionToggle = DOM.createSpan();
+
     @Override
     protected void extend(ServerConnector target) {
         panel = (VPanel) ((ComponentConnector) target).getWidget();
         panel.addStyleName(CLASSNAME);
+
+        captionToggle.addClassName(CLASSNAME + "-toggle");
+        DOM.insertChild(panel.captionNode, captionToggle, 2);
+
         updateStyleName(panel);
 
         panel.addDomHandler(new ClickHandler() {
