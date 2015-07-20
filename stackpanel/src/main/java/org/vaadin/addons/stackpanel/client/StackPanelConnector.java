@@ -2,7 +2,6 @@ package org.vaadin.addons.stackpanel.client;
 
 import java.util.logging.Logger;
 
-import org.vaadin.addons.stackpanel.StackPanel;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
@@ -17,6 +16,7 @@ import com.vaadin.client.communication.StateChangeEvent;
 import com.vaadin.client.extensions.AbstractExtensionConnector;
 import com.vaadin.client.ui.VPanel;
 import com.vaadin.shared.ui.Connect;
+import org.vaadin.addons.stackpanel.StackPanel;
 
 @SuppressWarnings("serial")
 @Connect(StackPanel.class)
@@ -39,6 +39,8 @@ public class StackPanelConnector extends AbstractExtensionConnector {
         panel.addStyleName(CLASSNAME);
 
         captionToggle.addClassName(CLASSNAME + "-toggle");
+        
+        
         DOM.insertChild(panel.captionNode, captionToggle, 2);
 
         updateStyleName(panel);
@@ -70,6 +72,18 @@ public class StackPanelConnector extends AbstractExtensionConnector {
     public void refresh() {
         UIObject.setVisible(panel.contentNode, getState().isOpen());
         updateStyleName(panel);
+        
+        if (getState().isToggleIconEnabled()) {
+        	updateToggleIcon(getState().isOpen());
+        }   
+    }
+    
+    private void updateToggleIcon(Boolean isOpen) {
+    	if (isOpen) {
+    		captionToggle.setInnerHTML(getState().getToggleUpHtml());
+    	} else {
+    		captionToggle.setInnerHTML(getState().getToggleDownHtml());
+    	}
     }
 
     private void updateStyleName(VPanel panel) {

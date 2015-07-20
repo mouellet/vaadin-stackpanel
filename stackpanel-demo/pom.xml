@@ -40,10 +40,12 @@
     </licenses>
 
     <repositories>
+    <!-- 
         <repository>
             <id>vaadin-addons</id>
             <url>http://maven.vaadin.com/vaadin-addons</url>
         </repository>
+    -->
         <repository>
             <id>vaadin-snapshots</id>
             <url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
@@ -78,15 +80,21 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+             
+            <dependency>
+            	<groupId>org.vaadin.addons</groupId>
+            	<artifactId>stackpanel</artifactId>
+            	<version>0.0.2</version>
+            </dependency>
+            <dependency>
+            	<groupId>javax.servlet</groupId>
+            	<artifactId>javax.servlet-api</artifactId>
+            	<version>3.0.1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>org.vaadin.addons</groupId>
-            <artifactId>stackpanel</artifactId>
-            <version>${version}</version>
-        </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-push</artifactId>
@@ -102,8 +110,12 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
             <scope>provided</scope>
+        </dependency>
+          
+        <dependency>
+        	<groupId>org.vaadin.addons</groupId>
+        	<artifactId>stackpanel</artifactId>
         </dependency>
     </dependencies>
 
@@ -165,8 +177,9 @@
                     <webappDirectory>${basedir}/src/main/webapp/VAADIN/widgetsets</webappDirectory>
                     <hostedWebapp>${basedir}/src/main/webapp/VAADIN/widgetsets</hostedWebapp>
                     <noServer>true</noServer>
-                    <persistentunitcachedir>${basedir}/target/tmp/gwt-unitCache</persistentunitcachedir>
+					<!-- <persistentunitcachedir>${basedir}/target/tmp/gwt-unitCache</persistentunitcachedir>-->
                     <compileReport>true</compileReport>
+                    <draftCompile>false</draftCompile>
                     <strict>true</strict>
                     <runTarget>http://localhost:8080/</runTarget>
                 </configuration>

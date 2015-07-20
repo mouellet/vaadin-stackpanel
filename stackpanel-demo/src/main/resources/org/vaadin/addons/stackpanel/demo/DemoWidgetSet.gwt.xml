@@ -7,7 +7,7 @@
     -->
 
     <!-- Inherit add-on widgetset -->
-    <inherits name="org.vaadin.addons.stackpanel.WidgetSet" />
+    
 
     <!--
      Uncomment the following to compile the widgetset for one browser only.
@@ -27,8 +27,22 @@
      See https://vaadin.com/wiki/-/wiki/Main/Using%20SuperDevMode for more
      information and instructions.
     -->
-    <!-- <set-configuration-property name="devModeRedirectEnabled" value="true" /> -->
+<!-- <set-configuration-property name="devModeRedirectEnabled" value="true" />-->
 
 
     <inherits name="com.vaadin.DefaultWidgetSet" />
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <inherits name="org.vaadin.addons.stackpanel.WidgetSet" />
 </module>
