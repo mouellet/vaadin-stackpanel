@@ -5,3 +5,7 @@ div.v-stackpanel {
 	-moz-user-select: none;
 	-ms-user-select: none;
 }
+
+div.v-stackpanel .v-stackpanel-toggle {
+	float: right;
+}

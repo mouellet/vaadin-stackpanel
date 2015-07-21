@@ -6,6 +6,9 @@ import com.vaadin.shared.communication.SharedState;
 public class StackPanelState extends SharedState {
 
     private boolean open;
+    private boolean toggleIconEnabled;
+    private String toggleDownHtml;
+    private String toggleUpHtml;
 
     public boolean isOpen() {
         return open;
@@ -14,5 +17,29 @@ public class StackPanelState extends SharedState {
     public void setOpen(boolean open) {
         this.open = open;
     }
+    
+    public void setToggleDownHtml(String toggleDownHtml) {
+    	this.toggleDownHtml = toggleDownHtml;
+    }
+    
+    public String getToggleDownHtml() {
+    	return toggleDownHtml;
+    }
+    
+    public void setToggleUpHtml(String toggleDownHtml) {
+    	this.toggleUpHtml = toggleDownHtml;
+    }
+    
+    public String getToggleUpHtml() {
+    	return toggleUpHtml;
+    }
+
+	public boolean isToggleIconEnabled() {
+		return toggleIconEnabled;
+	}
+
+	public void setToggleIconEnabled(boolean toggleIconEnabled) {
+		this.toggleIconEnabled = toggleIconEnabled;
+	}
 
 }
