@@ -49,13 +49,15 @@ Another way of debugging client-side is superdev mode. To enable it, uncomment d
  
 ## Release notes
 
-### Version 0.0.1-SNAPSHOT
+### Version 0.0.1
 - Initial release
+
+### Version 0.0.2
+- Added toggle icon functionality
 
 ## Roadmap
 
-This component is developed as a hobby with no public roadmap or any guarantees of upcoming releases. That said, the following features are planned for upcoming releases:
-- Openen/Closed indicator (icon) left or right alignable
+This component is developed as a hobby with no public roadmap or any guarantees of upcoming releases.
 
 ## Issue tracking
 
@@ -94,4 +96,14 @@ assertFalse(stackPanel.isOpen());
 
 stackPanel.open();
 assertTrue(stackPanel.isOpen());
+```
+
+### Toggle icon with +/- by default, but can be set or disabled for each StackPanel.
+
+```
+StackPanel stackPanel = StackPanel.extend(new Panel());
+stackPanel.setToggleDownIcon(FontAwesome.CARET_SQUARE_O_DOWN);
+stackPanel.setToggleUpIcon(FontAwesome.CARET_SQUARE_O_UP);
+
+stackPanel.setToggleIconsEnabled(false);
 ```
