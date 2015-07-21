@@ -21,17 +21,16 @@ public class StackPanel extends AbstractExtension {
             }
         }
 
-		@Override
-		public void setToggleDownHtml(String toogleDownHtml) {
-			getState().setToggleDownHtml(toogleDownHtml);
-			
-		}
+        @Override
+        public void setToggleDownHtml(String toogleDownHtml) {
+            getState().setToggleDownHtml(toogleDownHtml);
+        }
 
-		@Override
-		public void setToggleUpHtml(String toggleUpHtml) {
-			getState().setToggleUpHtml(toggleUpHtml);
-			
-		}
+        @Override
+        public void setToggleUpHtml(String toggleUpHtml) {
+            getState().setToggleUpHtml(toggleUpHtml);
+        }
+
     };
 
     protected StackPanel(Panel panel) {
@@ -39,12 +38,12 @@ public class StackPanel extends AbstractExtension {
         registerRpc(rpc);
         getState().setOpen(true);
         getState().setToggleIconEnabled(true);
-        //set standard toggle icons
+        // set standard toggle icons
         setToggleDownIcon(FontAwesome.PLUS);
         setToggleUpIcon(FontAwesome.MINUS);
         super.extend(panel);
     }
-    
+
     public static StackPanel extend(Panel panel) {
         return new StackPanel(panel);
     }
@@ -60,17 +59,17 @@ public class StackPanel extends AbstractExtension {
     public boolean isOpen() {
         return getState().isOpen();
     }
-    
-    public void setToggleIconsEnabled(boolean areEnabled) {
-		getState().setToggleIconEnabled(areEnabled);
-	}
 
-	public void setToggleDownIcon(FontAwesome toggleDownIcon) {
-    	getState().setToggleDownHtml(toggleDownIcon.getHtml());
+    public void setToggleIconsEnabled(boolean areEnabled) {
+        getState().setToggleIconEnabled(areEnabled);
     }
-    
+
+    public void setToggleDownIcon(FontAwesome toggleDownIcon) {
+        getState().setToggleDownHtml(toggleDownIcon.getHtml());
+    }
+
     public void setToggleUpIcon(FontAwesome toggleUpIcon) {
-    	getState().setToggleUpHtml(toggleUpIcon.getHtml());
+        getState().setToggleUpHtml(toggleUpIcon.getHtml());
     }
 
     @Override

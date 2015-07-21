@@ -78,16 +78,16 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-             
+
             <dependency>
-            	<groupId>org.vaadin.addons</groupId>
-            	<artifactId>stackpanel</artifactId>
-            	<version>0.0.2</version>
+                <groupId>org.vaadin.addons</groupId>
+                <artifactId>stackpanel</artifactId>
+                <version>0.0.2</version>
             </dependency>
             <dependency>
-            	<groupId>javax.servlet</groupId>
-            	<artifactId>javax.servlet-api</artifactId>
-            	<version>3.0.1</version>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>3.0.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -110,10 +110,10 @@
             <artifactId>javax.servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
-          
+
         <dependency>
-        	<groupId>org.vaadin.addons</groupId>
-        	<artifactId>stackpanel</artifactId>
+            <groupId>org.vaadin.addons</groupId>
+            <artifactId>stackpanel</artifactId>
         </dependency>
     </dependencies>
 
@@ -136,11 +136,11 @@
                 <configuration>
                     <filesets>
                         <fileset>
-							<!-- Clean-up widgetset required for "inplace" compilation -->
+                            <!-- Clean-up widgetset required for "inplace" compilation -->
                             <directory>${basedir}/src/main/webapp/VAADIN/widgetsets</directory>
                         </fileset>
                         <fileset>
-							<!-- Clean-up gwt cache -->
+                            <!-- Clean-up gwt cache -->
                             <directory>${basedir}/src/main/webapp/VAADIN/gwt-unitCache</directory>
                         </fileset>
                     </filesets>
@@ -175,17 +175,17 @@
                     <webappDirectory>${basedir}/src/main/webapp/VAADIN/widgetsets</webappDirectory>
                     <hostedWebapp>${basedir}/src/main/webapp/VAADIN/widgetsets</hostedWebapp>
                     <noServer>true</noServer>
-					<!-- <persistentunitcachedir>${basedir}/target/tmp/gwt-unitCache</persistentunitcachedir>-->
+                    <!-- <persistentunitcachedir>${basedir}/target/tmp/gwt-unitCache</persistentunitcachedir> -->
                     <compileReport>true</compileReport>
                     <draftCompile>false</draftCompile>
                     <strict>true</strict>
                     <runTarget>http://localhost:8080/</runTarget>
                 </configuration>
                 <executions>
-					<!-- You are free to mark this as permanently ignored in Eclipse -->
+                    <!-- You are free to mark this as permanently ignored in Eclipse -->
                     <execution>
                         <configuration>
-							<!-- if you don't specify any modules, the plugin will find them -->
+                            <!-- if you don't specify any modules, the plugin will find them -->
                         </configuration>
                         <goals>
                             <goal>resources</goal>
@@ -211,7 +211,8 @@
 
         <pluginManagement>
             <plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven
+                    build itself. -->
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>

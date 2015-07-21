@@ -32,17 +32,15 @@ public class DemoUI extends UI {
     protected void init(VaadinRequest request) {
 
         // panel with standard toggle icons
-    	Panel section1 = new SectionPanel();
+        Panel section1 = new SectionPanel();
         StackPanel.extend(section1);
 
-       
         // panel with individual icons
         Panel section2 = new SectionPanel();
         StackPanel panel2 = StackPanel.extend(section2);
         panel2.setToggleDownIcon(FontAwesome.CARET_SQUARE_O_DOWN);
         panel2.setToggleUpIcon(FontAwesome.CARET_SQUARE_O_UP);
-        
-        
+
         // panel without toggle icons
         Panel section3 = new SectionPanel();
         StackPanel panel3 = StackPanel.extend(section3);
@@ -62,10 +60,8 @@ public class DemoUI extends UI {
                     setMargin(true);
                     setSpacing(true);
                     setDefaultComponentAlignment(Alignment.BOTTOM_LEFT);
-                    addComponents(
-                            new TextField("First Name"),
-                            new TextField("Last Name"),
-                            new TextField("Phone"),
+                    addComponents(new TextField("First Name"),
+                            new TextField("Last Name"), new TextField("Phone"),
                             new Button("Save"));
                 }
             });

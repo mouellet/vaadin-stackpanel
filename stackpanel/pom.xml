@@ -13,9 +13,9 @@
         <vaadin.version>7.4.6</vaadin.version>
         <vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 
-		<!-- ZIP Manifest fields -->
+        <!-- ZIP Manifest fields -->
         <Implementation-Version>${project.version}</Implementation-Version>
-		<!-- Must not change this because of the Directory -->
+        <!-- Must not change this because of the Directory -->
         <Implementation-Title>${project.name}</Implementation-Title>
         <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
         <Vaadin-License-Title>Apache License 2.0</Vaadin-License-Title>
@@ -89,8 +89,8 @@
             <version>${vaadin.version}</version>
             <scope>provided</scope>
         </dependency>
-		
-		<!-- This can be replaced with TestNG or some other test framework supported by the surefire plugin -->
+
+        <!-- This can be replaced with TestNG or some other test framework supported by the surefire plugin -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -124,7 +124,7 @@
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                         </manifest>
                         <manifestEntries>
-							<!-- Package format version - do not change -->
+                            <!-- Package format version - do not change -->
                             <Vaadin-Package-Version>1</Vaadin-Package-Version>
                             <Vaadin-License-Title>${Vaadin-License-Title}</Vaadin-License-Title>
                             <Vaadin-Widgetsets>org.vaadin.addons.stackpanel.WidgetSet</Vaadin-Widgetsets>
@@ -181,7 +181,7 @@
                 </executions>
             </plugin>
 
-			<!-- Testing -->
+            <!-- Testing -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -189,8 +189,8 @@
             </plugin>
         </plugins>
 
-		<!-- This is needed for the sources required by the client-side compiler to be 
-			included in the produced JARs -->
+        <!-- This is needed for the sources required by the client-side compiler to be
+            included in the produced JARs -->
         <resources>
             <resource>
                 <directory>src/main/java</directory>

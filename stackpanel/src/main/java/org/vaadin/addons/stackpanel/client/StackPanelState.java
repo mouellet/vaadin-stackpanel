@@ -17,29 +17,29 @@ public class StackPanelState extends SharedState {
     public void setOpen(boolean open) {
         this.open = open;
     }
-    
+
     public void setToggleDownHtml(String toggleDownHtml) {
-    	this.toggleDownHtml = toggleDownHtml;
+        this.toggleDownHtml = toggleDownHtml;
     }
-    
+
     public String getToggleDownHtml() {
-    	return toggleDownHtml;
+        return toggleDownHtml;
     }
-    
+
     public void setToggleUpHtml(String toggleDownHtml) {
-    	this.toggleUpHtml = toggleDownHtml;
+        this.toggleUpHtml = toggleDownHtml;
     }
-    
+
     public String getToggleUpHtml() {
-    	return toggleUpHtml;
+        return toggleUpHtml;
     }
 
-	public boolean isToggleIconEnabled() {
-		return toggleIconEnabled;
-	}
+    public boolean isToggleIconEnabled() {
+        return toggleIconEnabled;
+    }
 
-	public void setToggleIconEnabled(boolean toggleIconEnabled) {
-		this.toggleIconEnabled = toggleIconEnabled;
-	}
+    public void setToggleIconEnabled(boolean toggleIconEnabled) {
+        this.toggleIconEnabled = toggleIconEnabled;
+    }
 
 }
