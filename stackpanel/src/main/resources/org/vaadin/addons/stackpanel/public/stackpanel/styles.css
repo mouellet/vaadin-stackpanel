@@ -8,4 +8,9 @@ div.v-stackpanel {
 
 div.v-stackpanel .v-stackpanel-toggle {
 	float: right;
+	opacity: 0.5;
+}
+
+div.v-stackpanel .v-stackpanel-toggle:hover {
+	opacity: 1;
 }

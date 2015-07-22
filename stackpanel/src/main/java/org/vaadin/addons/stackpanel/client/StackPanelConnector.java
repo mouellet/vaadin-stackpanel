@@ -2,9 +2,11 @@ package org.vaadin.addons.stackpanel.client;
 
 import java.util.logging.Logger;
 
-
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
+import com.google.gwt.dom.client.Node;
+import com.google.gwt.dom.client.NodeList;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.DOM;
@@ -16,6 +18,7 @@ import com.vaadin.client.communication.StateChangeEvent;
 import com.vaadin.client.extensions.AbstractExtensionConnector;
 import com.vaadin.client.ui.VPanel;
 import com.vaadin.shared.ui.Connect;
+
 import org.vaadin.addons.stackpanel.StackPanel;
 
 @SuppressWarnings("serial")
@@ -44,14 +47,16 @@ public class StackPanelConnector extends AbstractExtensionConnector {
         DOM.insertChild(panel.captionNode, captionToggle, 2);
 
         updateStyleName(panel);
+       
 
         panel.addDomHandler(new ClickHandler() {
 
             @Override
             public void onClick(ClickEvent event) {
                 EventTarget eventTarget = event.getNativeEvent().getEventTarget();
-                if (eventTarget.cast() == panel.captionNode
-                        || eventTarget.cast() == panel.captionNode.getFirstChildElement()) {
+           
+                if (eventTarget.cast() == panel.captionNode || isChildofNode(panel, eventTarget)
+                		|| eventTarget.cast() == captionToggle.getChild(0))  { 
                     getState().setOpen(!getState().isOpen());
                     refresh();
                     rpc.setOpen(getState().isOpen());
@@ -59,6 +64,25 @@ public class StackPanelConnector extends AbstractExtensionConnector {
             }
 
         }, ClickEvent.getType());
+    }
+    
+    private Boolean isChildofNode(VPanel panel, EventTarget target) {
+    	NodeList<Node> nodeChilds = panel.captionNode.getChildNodes();
+    	return childIterator(nodeChilds, target);
+    }
+    
+    private Boolean childIterator(NodeList<Node> nodeChilds, EventTarget target) {
+    	Boolean isChild = new Boolean(false);
+    	Integer childLength = nodeChilds.getLength();
+        
+        for (int i=0; i<=childLength-1;i++) {
+       	 Node child = panel.captionNode.getChild(i);
+	       	 if (target.cast() == child) {
+	       		 isChild = true;
+	       	 }
+	       }
+        
+        return isChild;
     }
 
     @Override

@@ -30,6 +30,11 @@ public class DemoUI extends UI {
 
     @Override
     protected void init(VaadinRequest request) {
+    	
+        // panel with standard toggle icons and icon
+    	Panel section0 = new SectionPanel();
+    	section0.setIcon(FontAwesome.ADJUST);
+        StackPanel.extend(section0);
 
         // panel with standard toggle icons
     	Panel section1 = new SectionPanel();
@@ -48,7 +53,7 @@ public class DemoUI extends UI {
         StackPanel panel3 = StackPanel.extend(section3);
         panel3.setToggleIconsEnabled(false);
 
-        setContent(new VerticalLayout(section1, section2, section3));
+        setContent(new VerticalLayout(section0, section1, section2, section3));
     }
 
     public static class SectionPanel extends Panel {
