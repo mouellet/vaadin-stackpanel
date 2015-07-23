@@ -58,6 +58,9 @@ Another way of debugging client-side is superdev mode. To enable it, uncomment d
 ### Version 0.0.3
 - Added toggle icon functionality
 
+### Version 0.0.4
+- Bug fixes
+
 ## Roadmap
 
 This component is developed as a hobby with no public roadmap or any guarantees of upcoming releases.
