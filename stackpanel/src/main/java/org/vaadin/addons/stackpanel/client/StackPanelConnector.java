@@ -2,11 +2,10 @@ package org.vaadin.addons.stackpanel.client;
 
 import java.util.logging.Logger;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import org.vaadin.addons.stackpanel.StackPanel;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
-import com.google.gwt.dom.client.Node;
-import com.google.gwt.dom.client.NodeList;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.DOM;
@@ -18,8 +17,6 @@ import com.vaadin.client.communication.StateChangeEvent;
 import com.vaadin.client.extensions.AbstractExtensionConnector;
 import com.vaadin.client.ui.VPanel;
 import com.vaadin.shared.ui.Connect;
-
-import org.vaadin.addons.stackpanel.StackPanel;
 
 @SuppressWarnings("serial")
 @Connect(StackPanel.class)
@@ -45,16 +42,16 @@ public class StackPanelConnector extends AbstractExtensionConnector {
         DOM.insertChild(panel.captionNode, captionToggle, 2);
 
         updateStyleName(panel);
-       
 
         panel.addDomHandler(new ClickHandler() {
 
             @Override
             public void onClick(ClickEvent event) {
                 EventTarget eventTarget = event.getNativeEvent().getEventTarget();
-           
-                if (eventTarget.cast() == panel.captionNode || eventTarget.cast() == panel.captionNode.getFirstChildElement() || 
-                		eventTarget.cast() == captionToggle.getFirstChildElement())  { 
+
+                if (eventTarget.cast() == panel.captionNode
+                        || eventTarget.cast() == panel.captionNode.getFirstChildElement()
+                        || eventTarget.cast() == captionToggle.getFirstChildElement()) {
                     getState().setOpen(!getState().isOpen());
                     refresh();
                     rpc.setOpen(getState().isOpen());
@@ -63,7 +60,6 @@ public class StackPanelConnector extends AbstractExtensionConnector {
 
         }, ClickEvent.getType());
     }
-    
 
     @Override
     public void onStateChanged(StateChangeEvent stateChangeEvent) {
