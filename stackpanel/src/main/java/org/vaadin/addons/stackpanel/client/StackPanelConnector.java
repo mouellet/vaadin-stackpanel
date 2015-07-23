@@ -55,8 +55,8 @@ public class StackPanelConnector extends AbstractExtensionConnector {
             public void onClick(ClickEvent event) {
                 EventTarget eventTarget = event.getNativeEvent().getEventTarget();
            
-                if (eventTarget.cast() == panel.captionNode || isChildofNode(panel, eventTarget)
-                		|| eventTarget.cast() == captionToggle.getChild(0))  { 
+                if (eventTarget.cast() == panel.captionNode || eventTarget.cast() == panel.captionNode.getFirstChildElement() || 
+                		eventTarget.cast() == captionToggle.getFirstChildElement())  { 
                     getState().setOpen(!getState().isOpen());
                     refresh();
                     rpc.setOpen(getState().isOpen());
@@ -66,24 +66,6 @@ public class StackPanelConnector extends AbstractExtensionConnector {
         }, ClickEvent.getType());
     }
     
-    private Boolean isChildofNode(VPanel panel, EventTarget target) {
-    	NodeList<Node> nodeChilds = panel.captionNode.getChildNodes();
-    	return childIterator(nodeChilds, target);
-    }
-    
-    private Boolean childIterator(NodeList<Node> nodeChilds, EventTarget target) {
-    	Boolean isChild = new Boolean(false);
-    	Integer childLength = nodeChilds.getLength();
-        
-        for (int i=0; i<=childLength-1;i++) {
-       	 Node child = panel.captionNode.getChild(i);
-	       	 if (target.cast() == child) {
-	       		 isChild = true;
-	       	 }
-	       }
-        
-        return isChild;
-    }
 
     @Override
     public void onStateChanged(StateChangeEvent stateChangeEvent) {
