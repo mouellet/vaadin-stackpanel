@@ -1,7 +1,11 @@
 package org.vaadin.addons.stackpanel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.vaadin.addons.stackpanel.client.StackPanelRpc;
 import org.vaadin.addons.stackpanel.client.StackPanelState;
+import org.w3c.dom.ls.LSInput;
 
 import com.vaadin.server.AbstractExtension;
 import com.vaadin.server.FontAwesome;
@@ -11,6 +15,12 @@ import com.vaadin.ui.Panel;
 
 @SuppressWarnings("serial")
 public class StackPanel extends AbstractExtension {
+	
+	public interface ToggleListener {
+		public void toggleClick(StackPanel source);
+	}
+	
+	private List<ToggleListener> listeners = new ArrayList<ToggleListener>();
 
     private ServerRpc rpc = new StackPanelRpc() {
 
@@ -31,6 +41,13 @@ public class StackPanel extends AbstractExtension {
 		public void setToggleUpHtml(String toggleUpHtml) {
 			getState().setToggleUpHtml(toggleUpHtml);
 			
+		}
+
+		@Override
+		public void toggleClick() {
+			for (ToggleListener listener : listeners) {
+				listener.toggleClick(StackPanel.this);
+			}
 		}
     };
 
@@ -72,6 +89,10 @@ public class StackPanel extends AbstractExtension {
     public void setToggleUpIcon(FontAwesome toggleUpIcon) {
     	getState().setToggleUpHtml(toggleUpIcon.getHtml());
     }
+    
+    public void addToggleListener(ToggleListener listener) {
+    	listeners.add(listener);
+    }
 
     @Override
     protected StackPanelState getState() {
@@ -82,5 +103,7 @@ public class StackPanel extends AbstractExtension {
     public Class<? extends SharedState> getStateType() {
         return StackPanelState.class;
     }
+
+
 
 }

@@ -50,6 +50,8 @@ public class StackPanelConnector extends AbstractExtensionConnector {
        
 
         panel.addDomHandler(new ClickHandler() {
+        	
+        	//toggle click event
 
             @Override
             public void onClick(ClickEvent event) {
@@ -57,9 +59,17 @@ public class StackPanelConnector extends AbstractExtensionConnector {
            
                 if (eventTarget.cast() == panel.captionNode || eventTarget.cast() == panel.captionNode.getFirstChildElement() || 
                 		eventTarget.cast() == captionToggle.getFirstChildElement())  { 
+                	
+                	
+                	//refresh state of panel
                     getState().setOpen(!getState().isOpen());
                     refresh();
                     rpc.setOpen(getState().isOpen());
+                    
+                    //fire toggle listener
+                    rpc.toggleClick();
+                    
+                    
                 }
             }
 
