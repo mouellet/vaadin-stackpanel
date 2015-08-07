@@ -40,10 +40,12 @@
     </licenses>
 
     <repositories>
+      <!-- 
         <repository>
             <id>vaadin-addons</id>
             <url>http://maven.vaadin.com/vaadin-addons</url>
         </repository>
+         -->
         <repository>
             <id>vaadin-snapshots</id>
             <url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
@@ -80,14 +82,14 @@
             </dependency>
              
             <dependency>
-            	<groupId>org.vaadin.addons</groupId>
-            	<artifactId>stackpanel</artifactId>
-            	<version>0.0.2</version>
-            </dependency>
-            <dependency>
             	<groupId>javax.servlet</groupId>
             	<artifactId>javax.servlet-api</artifactId>
             	<version>3.0.1</version>
+            </dependency>
+            <dependency>
+            	<groupId>org.vaadin.addons</groupId>
+            	<artifactId>stackpanel</artifactId>
+            	<version>0.0.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -179,7 +181,7 @@
                     <compileReport>true</compileReport>
                     <draftCompile>false</draftCompile>
                     <strict>true</strict>
-                    <runTarget>http://localhost:8080/</runTarget>
+                    <runTarget>http://localhost:8888/</runTarget>
                 </configuration>
                 <executions>
 					<!-- You are free to mark this as permanently ignored in Eclipse -->

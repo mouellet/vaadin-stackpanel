@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.vaadin.addons.stackpanel.client.StackPanelRpc;
 import org.vaadin.addons.stackpanel.client.StackPanelState;
-import org.w3c.dom.ls.LSInput;
 
 import com.vaadin.server.AbstractExtension;
 import com.vaadin.server.FontAwesome;
