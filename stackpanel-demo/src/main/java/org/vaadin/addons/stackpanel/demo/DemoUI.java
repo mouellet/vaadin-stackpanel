@@ -3,6 +3,7 @@ package org.vaadin.addons.stackpanel.demo;
 import javax.servlet.annotation.WebServlet;
 
 import org.vaadin.addons.stackpanel.StackPanel;
+import org.vaadin.addons.stackpanel.StackPanel.ToggleListener;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
@@ -32,32 +33,44 @@ public class DemoUI extends UI {
     protected void init(VaadinRequest request) {
     	
         // panel with standard toggle icons and icon
-    	Panel section0 = new SectionPanel();
+    	Panel section0 = new SectionPanel("StackPanel with icon");
     	section0.setIcon(FontAwesome.ADJUST);
         StackPanel.extend(section0);
 
         // panel with standard toggle icons
-        Panel section1 = new SectionPanel();
+        Panel section1 = new SectionPanel("StackPanel");
         StackPanel.extend(section1);
 
         // panel with individual icons
-        Panel section2 = new SectionPanel();
+        Panel section2 = new SectionPanel("StackPanel with individual toggle icons");
         StackPanel panel2 = StackPanel.extend(section2);
         panel2.setToggleDownIcon(FontAwesome.CARET_SQUARE_O_DOWN);
         panel2.setToggleUpIcon(FontAwesome.CARET_SQUARE_O_UP);
 
         // panel without toggle icons
-        Panel section3 = new SectionPanel();
+        Panel section3 = new SectionPanel("StackPanel without icons");
         StackPanel panel3 = StackPanel.extend(section3);
         panel3.setToggleIconsEnabled(false);
+        
+        // panel without toggle icons
+        Panel section4 = new SectionPanel("StackPanel with toggle listener");
+        StackPanel panel4 = StackPanel.extend(section4);
+        panel4.addToggleListener(new ToggleListener() {
+            
+            @Override
+            public void toggleClick(StackPanel source) {
+                showNotification("Toggle Listener fired!");
+                
+            }
+        });
 
-        setContent(new VerticalLayout(section0, section1, section2, section3));
+        setContent(new VerticalLayout(section0, section1, section2, section3, section4));
     }
 
     public static class SectionPanel extends Panel {
 
-        public SectionPanel() {
-            setCaption("StackPanel");
+        public SectionPanel(String caption) {
+            setCaption(caption);
             setContent(new HorizontalLayout() {
 
                 {
