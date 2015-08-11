@@ -58,7 +58,6 @@ public class StackPanelConnector extends AbstractExtensionConnector {
 
                     //fire toggle listener
                     rpc.toggleClick();
-
                 }
             }
 

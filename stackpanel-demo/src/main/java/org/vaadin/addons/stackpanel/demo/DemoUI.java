@@ -31,10 +31,10 @@ public class DemoUI extends UI {
 
     @Override
     protected void init(VaadinRequest request) {
-    	
+
         // panel with standard toggle icons and icon
-    	Panel section0 = new SectionPanel("StackPanel with icon");
-    	section0.setIcon(FontAwesome.ADJUST);
+        Panel section0 = new SectionPanel("StackPanel with icon");
+        section0.setIcon(FontAwesome.ADJUST);
         StackPanel.extend(section0);
 
         // panel with standard toggle icons
@@ -51,16 +51,15 @@ public class DemoUI extends UI {
         Panel section3 = new SectionPanel("StackPanel without icons");
         StackPanel panel3 = StackPanel.extend(section3);
         panel3.setToggleIconsEnabled(false);
-        
+
         // panel without toggle icons
         Panel section4 = new SectionPanel("StackPanel with toggle listener");
         StackPanel panel4 = StackPanel.extend(section4);
         panel4.addToggleListener(new ToggleListener() {
-            
+
             @Override
             public void toggleClick(StackPanel source) {
                 showNotification("Toggle Listener fired!");
-                
             }
         });
 
@@ -79,7 +78,8 @@ public class DemoUI extends UI {
                     setSpacing(true);
                     setDefaultComponentAlignment(Alignment.BOTTOM_LEFT);
                     addComponents(new TextField("First Name"),
-                            new TextField("Last Name"), new TextField("Phone"),
+                            new TextField("Last Name"),
+                            new TextField("Phone"),
                             new Button("Save"));
                 }
             });
