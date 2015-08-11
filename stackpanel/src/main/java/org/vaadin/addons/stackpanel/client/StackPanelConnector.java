@@ -55,6 +55,10 @@ public class StackPanelConnector extends AbstractExtensionConnector {
                     getState().setOpen(!getState().isOpen());
                     refresh();
                     rpc.setOpen(getState().isOpen());
+
+                    //fire toggle listener
+                    rpc.toggleClick();
+
                 }
             }
 
