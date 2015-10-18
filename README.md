@@ -64,6 +64,9 @@ Another way of debugging client-side is superdev mode. To enable it, uncomment d
 ### Version 0.0.5
 - Added toggle listener
 
+### Version 0.0.6
+- Fixes issue #8
+
 ## Roadmap
 
 This component is developed as a hobby with no public roadmap or any guarantees of upcoming releases.
