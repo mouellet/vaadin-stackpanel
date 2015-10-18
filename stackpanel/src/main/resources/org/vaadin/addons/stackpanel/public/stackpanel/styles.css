@@ -1,4 +1,4 @@
-div.v-stackpanel {
+div.v-stackpanel > div.v-panel-captionwrap {
 	cursor: pointer;
 	user-select: none;
 	-webkit-user-select: none;
