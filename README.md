@@ -49,23 +49,23 @@ Another way of debugging client-side is superdev mode. To enable it, uncomment d
  
 ## Release notes
 
-### Version 0.0.1
-- Initial release
-
-### Version 0.0.2
-- Added span tag for toggle button
-
-### Version 0.0.3
-- Added toggle icon functionality
-
-### Version 0.0.4
-- Bug fixes
+### Version 0.0.6
+- Fixes issue #8
 
 ### Version 0.0.5
 - Added toggle listener
 
-### Version 0.0.6
-- Fixes issue #8
+### Version 0.0.4
+- Bug fixes
+
+### Version 0.0.3
+- Added toggle icon functionality
+
+### Version 0.0.2
+- Added span tag for toggle button
+
+### Version 0.0.1
+- Initial release
 
 ## Roadmap
 

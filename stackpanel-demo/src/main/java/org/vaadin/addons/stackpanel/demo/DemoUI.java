@@ -14,6 +14,7 @@ import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
@@ -25,7 +26,7 @@ import com.vaadin.ui.VerticalLayout;
 public class DemoUI extends UI {
 
     @WebServlet(value = "/*", asyncSupported = true)
-    @VaadinServletConfiguration(productionMode = false, ui = DemoUI.class, widgetset = "org.vaadin.addons.stackpanel.demo.DemoWidgetSet")
+    @VaadinServletConfiguration(productionMode = false, ui = DemoUI.class)
     public static class Servlet extends VaadinServlet {
     }
 
@@ -59,7 +60,7 @@ public class DemoUI extends UI {
 
             @Override
             public void toggleClick(StackPanel source) {
-                showNotification("Toggle Listener fired!");
+                Notification.show("Toggle Listener fired!");
             }
         });
 
@@ -77,7 +78,8 @@ public class DemoUI extends UI {
                     setMargin(true);
                     setSpacing(true);
                     setDefaultComponentAlignment(Alignment.BOTTOM_LEFT);
-                    addComponents(new TextField("First Name"),
+                    addComponents(
+                            new TextField("First Name"),
                             new TextField("Last Name"),
                             new TextField("Phone"),
                             new Button("Save"));
