@@ -7,7 +7,7 @@
     <groupId>org.vaadin.addons</groupId>
     <artifactId>stackpanel-root</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>StackPanel Extension for Vaadin Root Project</name>
 
     <prerequisites>
