@@ -64,7 +64,13 @@ public class DemoUI extends UI {
             }
         });
 
-        setContent(new VerticalLayout(section0, section1, section2, section3, section4));
+        // panel with caption as html
+        Panel section5 = new SectionPanel("StackPanel <b>with caption as html</b>");
+        section5.setCaptionAsHtml(true);
+        section5.setIcon(FontAwesome.SHOPPING_BASKET);
+        StackPanel panel5 = StackPanel.extend(section5);
+
+        setContent(new VerticalLayout(section0, section1, section2, section3, section4, section5));
     }
 
     public static class SectionPanel extends Panel {

@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 import org.vaadin.addons.stackpanel.StackPanel;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.DOM;
@@ -47,11 +46,7 @@ public class StackPanelConnector extends AbstractExtensionConnector {
 
             @Override
             public void onClick(ClickEvent event) {
-                EventTarget eventTarget = event.getNativeEvent().getEventTarget();
-
-                if (eventTarget.cast() == panel.captionNode
-                        || eventTarget.cast() == panel.captionNode.getFirstChildElement()
-                        || eventTarget.cast() == captionToggle.getFirstChildElement()) {
+                if (DOM.asOld(panel.captionNode).isOrHasChild(Element.as(event.getNativeEvent().getEventTarget()))) {
                     getState().setOpen(!getState().isOpen());
                     refresh();
                     rpc.setOpen(getState().isOpen());
