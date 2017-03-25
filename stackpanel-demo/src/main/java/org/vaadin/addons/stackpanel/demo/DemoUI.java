@@ -8,7 +8,7 @@ import org.vaadin.addons.stackpanel.StackPanel.ToggleListener;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
-import com.vaadin.server.FontAwesome;
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Alignment;
@@ -35,7 +35,7 @@ public class DemoUI extends UI {
 
         // panel with standard toggle icons and icon
         Panel section0 = new SectionPanel("StackPanel with icon");
-        section0.setIcon(FontAwesome.ADJUST);
+        section0.setIcon(VaadinIcons.ADJUST);
         StackPanel.extend(section0);
 
         // panel with standard toggle icons
@@ -45,8 +45,8 @@ public class DemoUI extends UI {
         // panel with individual icons
         Panel section2 = new SectionPanel("StackPanel with individual toggle icons");
         StackPanel panel2 = StackPanel.extend(section2);
-        panel2.setToggleDownIcon(FontAwesome.CARET_SQUARE_O_DOWN);
-        panel2.setToggleUpIcon(FontAwesome.CARET_SQUARE_O_UP);
+        panel2.setToggleDownIcon(VaadinIcons.CARET_SQUARE_DOWN_O);
+        panel2.setToggleUpIcon(VaadinIcons.CARET_SQUARE_UP_O);
 
         // panel without toggle icons
         Panel section3 = new SectionPanel("StackPanel without icons");
@@ -67,7 +67,7 @@ public class DemoUI extends UI {
         // panel with caption as html
         Panel section5 = new SectionPanel("StackPanel <b>with caption as html</b>");
         section5.setCaptionAsHtml(true);
-        section5.setIcon(FontAwesome.SHOPPING_BASKET);
+        section5.setIcon(VaadinIcons.CART);
         StackPanel panel5 = StackPanel.extend(section5);
 
         setContent(new VerticalLayout(section0, section1, section2, section3, section4, section5));

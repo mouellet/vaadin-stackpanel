@@ -10,13 +10,17 @@
     <version>2.0.0-SNAPSHOT</version>
     <name>StackPanel Extension for Vaadin Demo</name>
 
+    <prerequisites>
+        <maven>3</maven>
+    </prerequisites>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
-        <vaadin.version>7.7.0</vaadin.version>
-        <vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
-        <jetty.plugin.version>9.2.3.v20140905</jetty.plugin.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <vaadin.version>8.0.4</vaadin.version>
+        <vaadin.plugin.version>8.0.4</vaadin.plugin.version>
+        <jetty.plugin.version>9.3.9.v20160517</jetty.plugin.version>
     </properties>
 
     <organization>
@@ -99,6 +103,7 @@
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-client-compiler</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
@@ -116,10 +121,9 @@
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.6</version>
+                <version>3.0.0</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <packagingExcludes>WEB-INF/classes/VAADIN/widgetsets/WEB-INF/**</packagingExcludes>
                 </configuration>
             </plugin>
             <plugin>
@@ -135,22 +139,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <filesets>
-                        <fileset>
-                            <directory>src/main/webapp/VAADIN/themes</directory>
-                            <includes>
-                                <include>**/styles.css</include>
-                                <include>**/styles.scss.cache</include>
-                            </includes>
-                        </fileset>
-                    </filesets>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>

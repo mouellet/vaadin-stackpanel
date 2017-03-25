@@ -6,8 +6,9 @@ import java.util.List;
 import org.vaadin.addons.stackpanel.client.StackPanelRpc;
 import org.vaadin.addons.stackpanel.client.StackPanelState;
 
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.AbstractExtension;
-import com.vaadin.server.FontAwesome;
+import com.vaadin.server.FontIcon;
 import com.vaadin.shared.communication.ServerRpc;
 import com.vaadin.shared.communication.SharedState;
 import com.vaadin.ui.Panel;
@@ -20,7 +21,7 @@ public class StackPanel extends AbstractExtension {
         public void toggleClick(StackPanel source);
     }
 
-    private List<ToggleListener> listeners = new ArrayList<ToggleListener>();
+    private List<ToggleListener> listeners = new ArrayList<>();
 
     private ServerRpc rpc = new StackPanelRpc() {
 
@@ -56,8 +57,8 @@ public class StackPanel extends AbstractExtension {
         getState().setOpen(true);
         getState().setToggleIconEnabled(true);
         // set standard toggle icons
-        setToggleDownIcon(FontAwesome.PLUS);
-        setToggleUpIcon(FontAwesome.MINUS);
+        setToggleDownIcon(VaadinIcons.PLUS);
+        setToggleUpIcon(VaadinIcons.MINUS);
         super.extend(panel);
     }
 
@@ -81,11 +82,11 @@ public class StackPanel extends AbstractExtension {
         getState().setToggleIconEnabled(areEnabled);
     }
 
-    public void setToggleDownIcon(FontAwesome toggleDownIcon) {
+    public void setToggleDownIcon(FontIcon toggleDownIcon) {
         getState().setToggleDownHtml(toggleDownIcon.getHtml());
     }
 
-    public void setToggleUpIcon(FontAwesome toggleUpIcon) {
+    public void setToggleUpIcon(FontIcon toggleUpIcon) {
         getState().setToggleUpHtml(toggleUpIcon.getHtml());
     }
 

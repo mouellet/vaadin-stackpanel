@@ -1,4 +1,4 @@
-# StackPanel Extension for Vaadin 7
+# StackPanel Extension for Vaadin 8
 
 StackPanel is a Panel extension that hides or shows the Panel's content when the Panel's header is clicked.
 
@@ -48,6 +48,9 @@ Another way of debugging client-side is superdev mode. To enable it, uncomment d
 
  
 ## Release notes
+
+### Version 2.0.0
+- Support for Vaadin 8 & Java 8
 
 ### Version 1.0.1
 - Fixes issue #9
