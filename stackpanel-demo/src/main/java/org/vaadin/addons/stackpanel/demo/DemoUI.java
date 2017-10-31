@@ -72,7 +72,7 @@ public class DemoUI extends UI {
         StackPanel panel5 = StackPanel.extend(section5);
         CheckBox enableDisable = new CheckBox("Section 5 enabled");
         enableDisable.setValue(true);
-        enableDisable.addValueChangeListener((v) -> {panel5.setEnabled(v.getValue());});
+        enableDisable.addValueChangeListener((v) -> {panel5.setToggleEnabled(v.getValue());});
         setContent(new VerticalLayout(section0, section1, section2, section3, section4, section5, enableDisable));
     }
 
