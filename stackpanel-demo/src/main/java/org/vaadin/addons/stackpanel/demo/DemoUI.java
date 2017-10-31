@@ -13,6 +13,7 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
@@ -69,8 +70,10 @@ public class DemoUI extends UI {
         section5.setCaptionAsHtml(true);
         section5.setIcon(VaadinIcons.CART);
         StackPanel panel5 = StackPanel.extend(section5);
-
-        setContent(new VerticalLayout(section0, section1, section2, section3, section4, section5));
+        CheckBox enableDisable = new CheckBox("Section 5 enabled");
+        enableDisable.setValue(true);
+        enableDisable.addValueChangeListener((v) -> {panel5.setEnabled(v.getValue());});
+        setContent(new VerticalLayout(section0, section1, section2, section3, section4, section5, enableDisable));
     }
 
     public static class SectionPanel extends Panel {

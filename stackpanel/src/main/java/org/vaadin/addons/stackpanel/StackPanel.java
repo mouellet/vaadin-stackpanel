@@ -90,6 +90,10 @@ public class StackPanel extends AbstractExtension {
         getState().setToggleUpHtml(toggleUpIcon.getHtml());
     }
 
+    public void setEnabled(boolean enabled) {
+        getState().setToggleEnabled(enabled);
+    }
+
     @Override
     protected StackPanelState getState() {
         return (StackPanelState) super.getState();

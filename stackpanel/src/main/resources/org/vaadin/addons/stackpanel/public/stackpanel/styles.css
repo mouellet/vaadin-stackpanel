@@ -14,3 +14,11 @@ div.v-stackpanel .v-stackpanel-toggle {
 div.v-stackpanel .v-stackpanel-toggle:hover {
 	opacity: 1;
 }
+
+div.v-stackpanel.v-stackpanel-disabled > div.v-panel-captionwrap {
+	cursor: default;
+}
+
+div.v-stackpanel.v-stackpanel-disabled .v-stackpanel-toggle {
+	visibility: hidden;
+}
