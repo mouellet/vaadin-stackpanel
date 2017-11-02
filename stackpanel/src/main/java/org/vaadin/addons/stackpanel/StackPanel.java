@@ -17,11 +17,15 @@ import com.vaadin.ui.Panel;
 public class StackPanel extends AbstractExtension {
 
     public interface ToggleListener {
+        void toggleClick(StackPanel source);
+    }
 
-        public void toggleClick(StackPanel source);
+    public interface ToggleDisabledClickListener {
+        void toggleDisabledClick(StackPanel source);
     }
 
     private List<ToggleListener> listeners = new ArrayList<>();
+    private List<ToggleDisabledClickListener> toggleDisabledClickListeners = new ArrayList<>();
 
     private ServerRpc rpc = new StackPanelRpc() {
 
@@ -36,6 +40,13 @@ public class StackPanel extends AbstractExtension {
         public void toggleClick() {
             for (ToggleListener listener : listeners) {
                 listener.toggleClick(StackPanel.this);
+            }
+        }
+
+        @Override
+        public void toggleDisabledClick() {
+            for (ToggleDisabledClickListener listener : toggleDisabledClickListeners) {
+                listener.toggleDisabledClick(StackPanel.this);
             }
         }
 
@@ -109,6 +120,14 @@ public class StackPanel extends AbstractExtension {
 
     public void removeToggleListener(ToggleListener listener) {
         listeners.remove(listener);
+    }
+
+    public void addToggleDisabledClickListener(ToggleDisabledClickListener listener) {
+        toggleDisabledClickListeners.add(listener);
+    }
+
+    public void removeToggleDisabledClickListener(ToggleDisabledClickListener listener) {
+        toggleDisabledClickListeners.remove(listener);
     }
 
     @Override

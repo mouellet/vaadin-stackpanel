@@ -33,7 +33,7 @@ public class StackPanelConnector extends AbstractExtensionConnector {
 
     private final Element captionToggle = DOM.createSpan();
 
-    private final ClickHandler clickHandler = new ClickHandler() {
+    private final ClickHandler toggleClickHandler = new ClickHandler() {
         @Override
         public void onClick(ClickEvent event) {
             if (DOM.asOld(panel.captionNode).isOrHasChild(Element.as(event.getNativeEvent().getEventTarget()))) {
@@ -43,6 +43,15 @@ public class StackPanelConnector extends AbstractExtensionConnector {
 
                 //fire toggle listener
                 rpc.toggleClick();
+            }
+        }
+    };
+
+    private final ClickHandler toggleDisabledClickHandler = new ClickHandler() {
+        @Override
+        public void onClick(ClickEvent event) {
+            if (DOM.asOld(panel.captionNode).isOrHasChild(Element.as(event.getNativeEvent().getEventTarget()))) {
+                rpc.toggleDisabledClick();
             }
         }
     };
@@ -60,7 +69,7 @@ public class StackPanelConnector extends AbstractExtensionConnector {
 
         updateStyleName(panel);
 
-        clickHandlerRegistration = panel.addDomHandler(clickHandler, ClickEvent.getType());
+        clickHandlerRegistration = panel.addDomHandler(toggleClickHandler, ClickEvent.getType());
     }
 
     @Override
@@ -83,11 +92,12 @@ public class StackPanelConnector extends AbstractExtensionConnector {
             if (clickHandlerRegistration != null) {
                 clickHandlerRegistration.removeHandler();
             }
-            clickHandlerRegistration = panel.addDomHandler(clickHandler, ClickEvent.getType());
+            clickHandlerRegistration = panel.addDomHandler(toggleClickHandler, ClickEvent.getType());
         } else {
             if (clickHandlerRegistration != null) {
                 clickHandlerRegistration.removeHandler();
             }
+            clickHandlerRegistration = panel.addDomHandler(toggleDisabledClickHandler, ClickEvent.getType());
         }
     }
 

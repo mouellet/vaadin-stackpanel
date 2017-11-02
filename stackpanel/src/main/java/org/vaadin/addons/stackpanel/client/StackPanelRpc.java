@@ -11,4 +11,6 @@ public interface StackPanelRpc extends ServerRpc {
     void setToggleUpHtml(String toogleUpHtml);
 
     void toggleClick();
+
+    void toggleDisabledClick();
 }
