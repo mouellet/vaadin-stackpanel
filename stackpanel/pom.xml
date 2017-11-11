@@ -7,7 +7,7 @@
     <groupId>org.vaadin.addons</groupId>
     <artifactId>stackpanel</artifactId>
     <packaging>jar</packaging>
-    <version>2.0.1</version>
+    <version>2.0.2-SNAPSHOT</version>
     <name>StackPanel Extension for Vaadin</name>
 
     <prerequisites>
