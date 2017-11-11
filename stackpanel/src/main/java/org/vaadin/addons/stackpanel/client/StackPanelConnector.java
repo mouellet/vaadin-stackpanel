@@ -7,6 +7,7 @@ import org.vaadin.addons.stackpanel.StackPanel;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.UIObject;
 import com.vaadin.client.ComponentConnector;
@@ -24,12 +25,38 @@ public class StackPanelConnector extends AbstractExtensionConnector {
     public static final String CLASSNAME = "v-stackpanel";
     private static final String STYLENAME_SUFFIX_OPEN = CLASSNAME + "-open";
     private static final String STYLENAME_SUFFIX_CLOSED = CLASSNAME + "-closed";
+    private static final String STYLENAME_SUFFIX_DISABLED= CLASSNAME + "-disabled";
 
     private StackPanelRpc rpc = RpcProxy.create(StackPanelRpc.class, this);
 
     private VPanel panel;
 
     private final Element captionToggle = DOM.createSpan();
+
+    private final ClickHandler toggleClickHandler = new ClickHandler() {
+        @Override
+        public void onClick(ClickEvent event) {
+            if (DOM.asOld(panel.captionNode).isOrHasChild(Element.as(event.getNativeEvent().getEventTarget()))) {
+                getState().setOpen(!getState().isOpen());
+                refresh();
+                rpc.setOpen(getState().isOpen());
+
+                //fire toggle listener
+                rpc.toggleClick();
+            }
+        }
+    };
+
+    private final ClickHandler toggleDisabledClickHandler = new ClickHandler() {
+        @Override
+        public void onClick(ClickEvent event) {
+            if (DOM.asOld(panel.captionNode).isOrHasChild(Element.as(event.getNativeEvent().getEventTarget()))) {
+                rpc.toggleDisabledClick();
+            }
+        }
+    };
+
+    private HandlerRegistration clickHandlerRegistration;
 
     @Override
     protected void extend(ServerConnector target) {
@@ -42,27 +69,13 @@ public class StackPanelConnector extends AbstractExtensionConnector {
 
         updateStyleName(panel);
 
-        panel.addDomHandler(new ClickHandler() {
-
-            @Override
-            public void onClick(ClickEvent event) {
-                if (DOM.asOld(panel.captionNode).isOrHasChild(Element.as(event.getNativeEvent().getEventTarget()))) {
-                    getState().setOpen(!getState().isOpen());
-                    refresh();
-                    rpc.setOpen(getState().isOpen());
-
-                    //fire toggle listener
-                    rpc.toggleClick();
-                }
-            }
-
-        }, ClickEvent.getType());
+        clickHandlerRegistration = panel.addDomHandler(toggleClickHandler, ClickEvent.getType());
     }
 
     @Override
     public void onStateChanged(StateChangeEvent stateChangeEvent) {
         super.onStateChanged(stateChangeEvent);
-        if (stateChangeEvent.hasPropertyChanged("open")) {
+        if (stateChangeEvent.hasPropertyChanged("open") || stateChangeEvent.hasPropertyChanged("toggleEnabled")) {
             refresh();
         }
     }
@@ -73,6 +86,18 @@ public class StackPanelConnector extends AbstractExtensionConnector {
 
         if (getState().isToggleIconEnabled()) {
             updateToggleIcon(getState().isOpen());
+        }
+
+        if (getState().isToggleEnabled()) {
+            if (clickHandlerRegistration != null) {
+                clickHandlerRegistration.removeHandler();
+            }
+            clickHandlerRegistration = panel.addDomHandler(toggleClickHandler, ClickEvent.getType());
+        } else {
+            if (clickHandlerRegistration != null) {
+                clickHandlerRegistration.removeHandler();
+            }
+            clickHandlerRegistration = panel.addDomHandler(toggleDisabledClickHandler, ClickEvent.getType());
         }
     }
 
@@ -91,6 +116,12 @@ public class StackPanelConnector extends AbstractExtensionConnector {
         } else {
             panel.removeStyleName(STYLENAME_SUFFIX_OPEN);
             panel.addStyleName(STYLENAME_SUFFIX_CLOSED);
+        }
+
+        if (getState().isToggleEnabled()) {
+            panel.removeStyleName(STYLENAME_SUFFIX_DISABLED);
+        } else {
+            panel.addStyleName(STYLENAME_SUFFIX_DISABLED);
         }
     }
 
