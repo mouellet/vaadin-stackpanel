@@ -49,6 +49,9 @@ Another way of debugging client-side is superdev mode. To enable it, uncomment d
  
 ## Release notes
 
+### Version 2.0.1
+- Add support for disabling toggle button
+
 ### Version 2.0.0
 - Support for Vaadin 8 & Java 8
 
