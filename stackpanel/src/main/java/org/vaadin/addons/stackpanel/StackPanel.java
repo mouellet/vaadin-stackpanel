@@ -24,8 +24,18 @@ public class StackPanel extends AbstractExtension {
         void toggleDisabledClick(StackPanel source);
     }
 
+    public interface FocusListener {
+        void focus(StackPanel source);
+    }
+
+    public interface BlurListener {
+        void blur(StackPanel source);
+    }
+
     private List<ToggleListener> listeners = new ArrayList<>();
     private List<ToggleDisabledClickListener> toggleDisabledClickListeners = new ArrayList<>();
+    private List<FocusListener> focusListeners = new ArrayList<>();
+    private List<BlurListener> blurListeners = new ArrayList<>();
 
     private ServerRpc rpc = new StackPanelRpc() {
 
@@ -47,6 +57,20 @@ public class StackPanel extends AbstractExtension {
         public void toggleDisabledClick() {
             for (ToggleDisabledClickListener listener : toggleDisabledClickListeners) {
                 listener.toggleDisabledClick(StackPanel.this);
+            }
+        }
+
+        @Override
+        public void focus() {
+            for (FocusListener focusListener : focusListeners) {
+                focusListener.focus(StackPanel.this);
+            }
+        }
+
+        @Override
+        public void blur() {
+            for (BlurListener blurListener : blurListeners) {
+                blurListener.blur(StackPanel.this);
             }
         }
 
@@ -128,6 +152,30 @@ public class StackPanel extends AbstractExtension {
 
     public void removeToggleDisabledClickListener(ToggleDisabledClickListener listener) {
         toggleDisabledClickListeners.remove(listener);
+    }
+
+    public int getTabIndex() {
+        return getState().getTabIndex();
+    }
+
+    public void setTabIndex(int tabIndex) {
+        getState().setTabIndex(tabIndex);
+    }
+
+    public void addFocusListener(FocusListener focusListener) {
+        focusListeners.add(focusListener);
+    }
+
+    public void removeFocusListener(FocusListener focusListener) {
+        focusListeners.remove(focusListener);
+    }
+
+    public void addBlurListener(BlurListener blurListener) {
+        blurListeners.add(blurListener);
+    }
+
+    public void removeBlurListener(BlurListener blurListener) {
+        blurListeners.remove(blurListener);
     }
 
     @Override
