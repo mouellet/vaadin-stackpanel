@@ -9,6 +9,8 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.UIObject;
 import com.vaadin.client.ComponentConnector;
 import com.vaadin.client.ServerConnector;
@@ -62,7 +64,6 @@ public class StackPanelConnector extends AbstractExtensionConnector {
     protected void extend(ServerConnector target) {
         panel = (VPanel) ((ComponentConnector) target).getWidget();
         panel.addStyleName(CLASSNAME);
-
         captionToggle.addClassName(CLASSNAME + "-toggle");
 
         DOM.insertChild(panel.captionNode, captionToggle, 2);
@@ -70,6 +71,20 @@ public class StackPanelConnector extends AbstractExtensionConnector {
         updateStyleName(panel);
 
         clickHandlerRegistration = panel.addDomHandler(toggleClickHandler, ClickEvent.getType());
+
+        panel.captionNode.setTabIndex(getState().getTabIndex());
+        Event.sinkEvents(panel.captionNode, Event.FOCUSEVENTS);
+        Event.setEventListener(panel.captionNode, new EventListener() {
+            @Override
+            public void onBrowserEvent(Event event) {
+                if (event.getTypeInt() == Event.ONFOCUS) {
+                    rpc.focus();
+                }
+                if (event.getTypeInt() == Event.ONBLUR) {
+                    rpc.blur();
+                }
+            }
+        });
     }
 
     @Override
@@ -99,6 +114,7 @@ public class StackPanelConnector extends AbstractExtensionConnector {
             }
             clickHandlerRegistration = panel.addDomHandler(toggleDisabledClickHandler, ClickEvent.getType());
         }
+        panel.captionNode.setTabIndex(getState().getTabIndex());
     }
 
     private void updateToggleIcon(Boolean isOpen) {

@@ -10,6 +10,7 @@ public class StackPanelState extends SharedState {
     private boolean toggleIconEnabled;
     private String toggleDownHtml;
     private String toggleUpHtml;
+    private int tabIndex = -1;
 
     public boolean isOpen() {
         return open;
@@ -50,5 +51,13 @@ public class StackPanelState extends SharedState {
     public void setToggleEnabled(boolean toggleEnabled) {
         this.toggleEnabled = toggleEnabled;
         setToggleIconEnabled(toggleEnabled);
+    }
+
+    public int getTabIndex() {
+        return tabIndex;
+    }
+
+    public void setTabIndex(int tabIndex) {
+        this.tabIndex = tabIndex;
     }
 }

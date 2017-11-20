@@ -55,13 +55,21 @@ public class DemoUI extends UI {
         panel3.setToggleIconsEnabled(false);
 
         // panel without toggle icons
-        Panel section4 = new SectionPanel("StackPanel with toggle listener");
+        SectionPanel section4 = new SectionPanel("StackPanel with toggle listener");
         StackPanel panel4 = StackPanel.extend(section4);
         panel4.addToggleListener(new ToggleListener() {
 
             @Override
             public void toggleClick(StackPanel source) {
                 Notification.show("Toggle Listener fired!");
+            }
+        });
+        panel4.setTabIndex(0);
+        panel4.close();
+        panel4.addFocusListener((s) -> {
+            if (!s.isOpen()) {
+                s.open();
+                section4.getFirstName().focus();
             }
         });
 
@@ -81,7 +89,7 @@ public class DemoUI extends UI {
     }
 
     public static class SectionPanel extends Panel {
-
+        private final TextField firstName = new TextField("First Name");
         public SectionPanel(String caption) {
             setCaption(caption);
             setContent(new HorizontalLayout() {
@@ -92,12 +100,16 @@ public class DemoUI extends UI {
                     setSpacing(true);
                     setDefaultComponentAlignment(Alignment.BOTTOM_LEFT);
                     addComponents(
-                            new TextField("First Name"),
+                            firstName,
                             new TextField("Last Name"),
                             new TextField("Phone"),
                             new Button("Save"));
                 }
             });
+        }
+
+        public TextField getFirstName() {
+            return firstName;
         }
     }
 

@@ -13,4 +13,8 @@ public interface StackPanelRpc extends ServerRpc {
     void toggleClick();
 
     void toggleDisabledClick();
+
+    void focus();
+
+    void blur();
 }
