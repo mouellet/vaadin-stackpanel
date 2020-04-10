@@ -11,10 +11,11 @@ Official releases of this add-on are available at Vaadin Directory. For Maven in
 ## Building and running demo
 
 git clone https://github.com/mouellet/vaadin-stackpanel.git
+```
 mvn clean install
-cd demo
+cd stackpanel-demo
 mvn jetty:run
-
+```
 To see the demo, navigate to http://localhost:8080/
 
 ## Development with Eclipse IDE
